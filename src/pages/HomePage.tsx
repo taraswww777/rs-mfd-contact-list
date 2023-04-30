@@ -7,10 +7,16 @@ export const HomePage: FC<CommonPageProps> = ({
   return (
     <div>
       <p>HomePage</p>
-      <p>
-        contactsState:
-        {JSON.stringify(contactsState[0])}
-      </p>
+      <div>
+        {contactsState[0].map(({
+          photo,id , name
+        })=>(
+          <div key={id}>
+            <p>name: {name}</p>
+            <img src={photo}/>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

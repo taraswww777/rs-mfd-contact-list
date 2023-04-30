@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './MainApp.scss';
 import {ThemeProvider} from 'react-bootstrap';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
@@ -7,18 +7,13 @@ import {HomePage, GroupPage} from 'src/pages';
 import {ContactDto} from 'src/types/dto/ContactDto';
 import {FavoriteContactsDto} from 'src/types/dto/FavoriteContactsDto';
 import {GroupContactsDto} from 'src/types/dto/GroupContactsDto';
-import {genFullContacts} from 'src/utils/generators/genFullContacts';
+import {DATA_CONTACT} from 'src/__data__';
 
-export const MainApp = memo(() => {
-  const contactsState = useState<ContactDto[]>([]);
+export const MainApp = () => {
+  const contactsState = useState<ContactDto[]>(DATA_CONTACT);
   const favoriteContactsState = useState<FavoriteContactsDto>([]);
   const groupContactsState = useState<GroupContactsDto[]>([]);
 
-  useEffect(() => {
-    genFullContacts().then((contact) => {
-      contactsState[1]((prevState) => ([...prevState, contact]))
-    });
-  }, [])
   return (
     <ThemeProvider
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
@@ -28,11 +23,17 @@ export const MainApp = memo(() => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={
-              <HomePage
-                contactsState={contactsState}
-                favoriteContactsState={favoriteContactsState}
-                groupContactsState={groupContactsState}
-              />
+              <>
+                <p>
+                  contactsState[1].length:
+                  {contactsState[1].length}
+                </p>
+                <HomePage
+                  contactsState={contactsState}
+                  favoriteContactsState={favoriteContactsState}
+                  groupContactsState={groupContactsState}
+                />
+              </>
             } />
             <Route path="group" element={
               <GroupPage
@@ -46,4 +47,4 @@ export const MainApp = memo(() => {
       </BrowserRouter>
     </ThemeProvider>
   );
-});
+};

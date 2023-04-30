@@ -1,5 +1,5 @@
 import faker from 'faker';
-import {ContactDto} from 'src/types/dto/ContactDto';
+import {ContactDto} from '../dto/ContactDto';
 
 export const genContact = (): ContactDto => {
   return {
