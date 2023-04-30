@@ -1,9 +1,9 @@
-import React, {FC, memo} from 'react';
+import React, {memo} from 'react';
 import {CommonPageProps} from './types';
 import {Col, Row} from 'react-bootstrap';
 import {ContactCard} from 'src/components/ContactCard';
 
-export const HomePage: FC<CommonPageProps> = memo(({
+export const ContactListPage = memo<CommonPageProps>(({
   contactsState
 }) => {
   return (
