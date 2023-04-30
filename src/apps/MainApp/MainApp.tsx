@@ -23,17 +23,11 @@ export const MainApp = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={
-              <>
-                <p>
-                  contactsState[1].length:
-                  {contactsState[1].length}
-                </p>
                 <HomePage
                   contactsState={contactsState}
                   favoriteContactsState={favoriteContactsState}
                   groupContactsState={groupContactsState}
                 />
-              </>
             } />
             <Route path="group" element={
               <GroupPage
