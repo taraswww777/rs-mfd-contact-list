@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import './App.scss';
 import {ThemeProvider} from 'react-bootstrap';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {Layout} from '../../components/Layout';
-import {HomePage, GroupPage} from '../../pages';
-import {ContactDto} from '../../types/dto/ContactDto';
-import {FavoriteContactsDto} from '../../types/dto/FavoriteContactsDto';
-import {GroupContactsDto} from '../../types/dto/GroupContactsDto';
+import {Layout} from 'src/components/Layout';
+import {HomePage, GroupPage} from 'src/pages';
+import {ContactDto} from 'src/types/dto/ContactDto';
+import {FavoriteContactsDto} from 'src/types/dto/FavoriteContactsDto';
+import {GroupContactsDto} from 'src/types/dto/GroupContactsDto';
 
 export const MainApp = () => {
   const contactsState = useState<ContactDto[]>([]);
