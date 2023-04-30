@@ -1,35 +1,18 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import {CommonPageProps} from './types';
-import {Card, Col, ListGroup, Row} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Col, Row} from 'react-bootstrap';
+import {ContactCard} from 'src/components/ContactCard';
 
-export const HomePage: FC<CommonPageProps> = ({
+export const HomePage: FC<CommonPageProps> = memo(({
   contactsState
 }) => {
   return (
     <Row xxl={4} className="g-4">
-      {contactsState[0].map(({
-        photo, id, name,
-        phone,
-        birthday,
-        address,
-      }) => (
-        <Col key={id}>
-          <Card key={id}>
-            <Card.Img variant="top" src={photo} />
-            <Card.Body>
-              <Card.Title>{name}</Card.Title>
-              <Card.Text>
-                <ListGroup>
-                  <ListGroup.Item><Link to={`tel:${phone}`} target="_blank">{phone}</Link></ListGroup.Item>
-                  <ListGroup.Item>{birthday}</ListGroup.Item>
-                  <ListGroup.Item>{address}</ListGroup.Item>
-                </ListGroup>
-              </Card.Text>
-            </Card.Body>
-          </Card>
+      {contactsState[0].map((contact) => (
+        <Col key={contact.id}>
+          <ContactCard contact={contact} withLink />
         </Col>
       ))}
     </Row>
   );
-}
+})
