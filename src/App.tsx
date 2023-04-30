@@ -10,14 +10,24 @@ export const App = () => {
     >
       <Container>
         <Row>
-          <Col
-            xs={2}
-            sm={2}
-            md={2}
-            lg={2}
-            xl={2}
-            xxl={2}
-          >rs-mfd-contact-list</Col>
+          <Col xxl={12}>
+            <h1>Книга контактов</h1>
+          </Col>
+          <Col xxl={4}>
+            <aside>
+
+            </aside>
+          </Col>
+          <Col xxl={8}>
+            <main>
+
+            </main>
+          </Col>
+          <Col xxl={12}>
+            <footer>
+
+            </footer>
+          </Col>
         </Row>
       </Container>
     </ThemeProvider>
