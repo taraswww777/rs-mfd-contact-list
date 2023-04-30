@@ -3,7 +3,7 @@ import './MainApp.scss';
 import {ThemeProvider} from 'react-bootstrap';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {Layout} from 'src/components/Layout';
-import {ContactListPage, GroupPage, ContactPage} from 'src/pages';
+import {ContactListPage, GroupPage, ContactPage, FavoritListPage} from 'src/pages';
 import {ContactDto} from 'src/types/dto/ContactDto';
 import {FavoriteContactsDto} from 'src/types/dto/FavoriteContactsDto';
 import {GroupContactsDto} from 'src/types/dto/GroupContactsDto';
@@ -52,6 +52,13 @@ export const MainApp = () => {
             </Route>
             <Route path="groups" element={
               <GroupPage
+                contactsState={contactsState}
+                favoriteContactsState={favoriteContactsState}
+                groupContactsState={groupContactsState}
+              />
+            } />
+            <Route path="favorit" element={
+              <FavoritListPage
                 contactsState={contactsState}
                 favoriteContactsState={favoriteContactsState}
                 groupContactsState={groupContactsState}
