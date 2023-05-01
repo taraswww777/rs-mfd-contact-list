@@ -25,13 +25,13 @@ export const ContactCard = memo<ContactCardProps>(({
           <Card.Title>
             {withLink ? <Link to={`/contact/${id}`}>{name}</Link> : name}
           </Card.Title>
-          <Card.Text>
+          <Card.Body>
             <ListGroup>
               <ListGroup.Item><Link to={`tel:${phone}`} target="_blank">{phone}</Link></ListGroup.Item>
               <ListGroup.Item>{birthday}</ListGroup.Item>
               <ListGroup.Item>{address}</ListGroup.Item>
             </ListGroup>
-          </Card.Text>
+          </Card.Body>
         </Card.Body>
       </Card>
     );
