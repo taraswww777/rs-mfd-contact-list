@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {Breadcrumb} from 'react-bootstrap';
+import {Breadcrumb, Col, ListGroup, Row} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 interface BreadcrumbsProps {
@@ -10,24 +10,30 @@ export const Breadcrumbs = memo<BreadcrumbsProps>(({
   pathNames
 }) => {
   return (
-    <Breadcrumb>
-      <Breadcrumb.Item>
-        <Link to={'/'}>Home</Link>
-      </Breadcrumb.Item>
-      {pathNames.map((name, index) => {
-        const routeTo = `/${pathNames.slice(0, index + 1).join('/')}`;
+    <Row>
+      <Col className={'mb-4'}>
+        <ListGroup horizontal>
+          <ListGroup.Item> <Link to={'/'}>Home</Link> </ListGroup.Item>
+          {pathNames.map((name, index) => {
+            const routeTo = `/${pathNames.slice(0, index + 1).join('/')}`;
 
-        // Определяем, является ли текущий элемент последним в списке
-        const isLast = index === pathNames.length - 1;
+            // Определяем, является ли текущий элемент последним в списке
+            const isLast = index === pathNames.length - 1;
 
-        return isLast ? (
-          <Breadcrumb.Item key={routeTo} active aria-current="page">{name}</Breadcrumb.Item>
-        ) : (
-          <Breadcrumb.Item>
-            <Link to={routeTo}>{name}</Link>
-          </Breadcrumb.Item>
-        );
-      })}
-    </Breadcrumb>
+            return (
+              <ListGroup.Item key={routeTo}>
+                {isLast ? (
+                  <span className={'active'}>{name}</span>
+                ) : (
+                  <Link to={routeTo} className={'link active'}>
+                    {name}
+                  </Link>
+                )}
+              </ListGroup.Item>
+            );
+          })}
+        </ListGroup>
+      </Col>
+    </Row>
   )
 });
