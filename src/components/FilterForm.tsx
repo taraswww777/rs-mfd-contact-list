@@ -21,7 +21,7 @@ export const FilterForm = memo<FilterFormProps>(({
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
       {({handleChange, handleSubmit}) => (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} onChange={handleSubmit}>
           <Row xxl={4} className="g-4">
             <Col>
               <InputGroup className="mb-3">

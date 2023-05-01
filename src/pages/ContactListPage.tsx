@@ -22,7 +22,7 @@ export const ContactListPage = memo<CommonPageProps>(({
 
     if (fv.groupId) {
       const groupContacts = groupContactsState[0].find(({id}) => id === fv.groupId);
-      console.log('groupContacts:', groupContacts)
+
       if (groupContacts) {
         findContacts = findContacts.filter(({id}) => (
           groupContacts.contactIds.includes(id)
