@@ -6,14 +6,14 @@ import {GroupContactsDto} from 'src/types/dto/GroupContactsDto';
 
 export interface FilterFormValues {
   name: string,
-  group: string
+  groupId: string
 }
 
-interface FilterForm extends FormikConfig<Partial<FilterFormValues>> {
+interface FilterFormProps extends FormikConfig<Partial<FilterFormValues>> {
   groupContactsList: GroupContactsDto[]
 }
 
-export const FilterForm = memo<FilterForm>(({
+export const FilterForm = memo<FilterFormProps>(({
   onSubmit,
   initialValues = {},
   groupContactsList
