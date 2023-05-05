@@ -3,13 +3,28 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import {MainApp} from './apps/MainApp';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux'
+import {RootState, store} from './store';
+import {CounterApp} from 'src/apps/CounterApp';
+import {counterSlice} from 'src/counterSlice';
+import {counterSlice2} from 'src/counterSlice2';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <MainApp />
+    <Provider store={store}>
+      <CounterApp counterSlice={counterSlice} selector={(state: RootState) => {
+         console.log('selector:counter:', state);
+        return state.counter.value;
+      }} />
+      <CounterApp counterSlice={counterSlice2} selector={(state: RootState) => {
+         console.log('selector:counter244:', state);
+        return state.counter244.value;
+      }} />
+      <MainApp />
+    </Provider>
   </React.StrictMode>
 );
 
